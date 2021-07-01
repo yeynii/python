@@ -1,6 +1,7 @@
 # 퀵
 array = [5, 7, 9, 0, 3, 1, 6, 2, 4, 8]
 
+"""
 def quick_sort(array, start, end):
   if start >= end:
     return
@@ -24,3 +25,18 @@ def quick_sort(array, start, end):
 
 quick_sort(array, 0, len(array) - 1)
 print(array)
+"""
+
+def quick_sort(array):
+  if len(array) <= 1:
+    return array
+
+  pivot = array[0] # 피벗은 첫 번째 원소
+  tail = array[1:] # 피벗을 제외한 리스트
+  
+  left_side = [x for x in tail if x <= pivot]
+  right_side = [x for x in tail if x > pivot]
+  
+  return quick_sort(left_side) + [pivot] + quick_sort(right_side)
+
+print(quick_sort(array))
